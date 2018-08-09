@@ -22,7 +22,7 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        points=0;
+        points = 0;
         TextView score = findViewById(R.id.points);
         score.setText(Integer.toString(points));
 
@@ -35,10 +35,11 @@ public class MainActivity extends Activity
         lbutton.setText(Integer.toString(left));
 
         Button rbutton = findViewById(R.id.right_button);
-        do {
+        do
+        {
             right = random.nextInt(10);
         }
-        while (left==right);
+        while (left == right);
         rbutton.setText(Integer.toString(right));
 
 
@@ -53,14 +54,12 @@ public class MainActivity extends Activity
         int left = Integer.parseInt(lbutton.getText().toString());
         int right = Integer.parseInt(rbutton.getText().toString());
 
-        if(left>right)
+        if (left > right)
         {
-            points ++;
-        }
-
-        else
+            points++;
+        } else
         {
-            points --;
+            points--;
         }
 
         TextView score = findViewById(R.id.points);
@@ -69,12 +68,12 @@ public class MainActivity extends Activity
         left = (random.nextInt(10));
         lbutton.setText(Integer.toString(left));
 
-        do {
+        do
+        {
             right = random.nextInt(10);
         }
-        while (left==right);
+        while (left == right);
         rbutton.setText(Integer.toString(right));
-
 
 
     }
@@ -87,14 +86,12 @@ public class MainActivity extends Activity
         int left = Integer.parseInt(lbutton.getText().toString());
         int right = Integer.parseInt(rbutton.getText().toString());
 
-        if(right>left)
+        if (right > left)
         {
-            points ++;
-        }
-
-        else
+            points++;
+        } else
         {
-            points --;
+            points--;
         }
 
         TextView score = findViewById(R.id.points);
@@ -103,10 +100,11 @@ public class MainActivity extends Activity
         left = (random.nextInt(10));
         lbutton.setText(Integer.toString(left));
 
-        do {
+        do
+        {
             right = random.nextInt(10);
         }
-        while (left==right);
+        while (left == right);
         rbutton.setText(Integer.toString(right));
     }
 }
