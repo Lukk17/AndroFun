@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -30,9 +31,11 @@ public class MainActivity extends Activity
         if (isLeftNumberLarger())
         {
             points++;
+            Toast.makeText(this, "Well done", Toast.LENGTH_SHORT).show();
         } else
         {
             points--;
+            Toast.makeText(this, "Ekhmm..", Toast.LENGTH_SHORT).show();
         }
 
         scoreIt();
@@ -44,9 +47,11 @@ public class MainActivity extends Activity
         if (!isLeftNumberLarger())
         {
             points++;
+            Toast.makeText(this, "Well done", Toast.LENGTH_SHORT).show();
         } else
         {
             points--;
+            Toast.makeText(this, "Ekhmm..", Toast.LENGTH_SHORT).show();
         }
 
         scoreIt();
@@ -86,6 +91,6 @@ public class MainActivity extends Activity
     public void scoreIt()
     {
         TextView score = findViewById(R.id.points);
-        score.setText(Integer.toString(points));
+        score.setText("points: " + Integer.toString(points));
     }
 }
