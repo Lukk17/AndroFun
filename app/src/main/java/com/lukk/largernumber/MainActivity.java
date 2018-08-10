@@ -31,11 +31,11 @@ public class MainActivity extends Activity
         if (isLeftNumberLarger())
         {
             points++;
-            Toast.makeText(this, "Well done", Toast.LENGTH_SHORT).show();
+            makeToast(true);
         } else
         {
             points--;
-            Toast.makeText(this, "Ekhmm..", Toast.LENGTH_SHORT).show();
+            makeToast(false);
         }
 
         scoreIt();
@@ -47,11 +47,11 @@ public class MainActivity extends Activity
         if (!isLeftNumberLarger())
         {
             points++;
-            Toast.makeText(this, "Well done", Toast.LENGTH_SHORT).show();
+            makeToast(true);
         } else
         {
             points--;
-            Toast.makeText(this, "Ekhmm..", Toast.LENGTH_SHORT).show();
+            makeToast(false);
         }
 
         scoreIt();
@@ -92,5 +92,16 @@ public class MainActivity extends Activity
     {
         TextView score = findViewById(R.id.points);
         score.setText("points: " + Integer.toString(points));
+    }
+
+    public void makeToast(boolean win)
+    {
+        if (win)
+        {
+            Toast.makeText(this, "Well done", Toast.LENGTH_SHORT).show();
+        } else
+        {
+            Toast.makeText(this, "Ekhmm..", Toast.LENGTH_SHORT).show();
+        }
     }
 }
