@@ -12,9 +12,6 @@ public class MainActivity extends Activity
 {
 
     private int points;
-    private int left;
-    private int right;
-    private Random random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -23,38 +20,14 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
 
         points = 0;
-        TextView score = findViewById(R.id.points);
-        score.setText(Integer.toString(points));
-
-        random = new Random();
-
-        left = (random.nextInt(10));
-        right = 0;
-
-        Button lbutton = findViewById(R.id.left_button);
-        lbutton.setText(Integer.toString(left));
-
-        Button rbutton = findViewById(R.id.right_button);
-        do
-        {
-            right = random.nextInt(10);
-        }
-        while (left == right);
-        rbutton.setText(Integer.toString(right));
-
-
+        scoreIt();
+        randomizeNumbers();
     }
+
 
     public void leftClick(View view)
     {
-
-        Button lbutton = findViewById(R.id.left_button);
-        Button rbutton = findViewById(R.id.right_button);
-
-        int left = Integer.parseInt(lbutton.getText().toString());
-        int right = Integer.parseInt(rbutton.getText().toString());
-
-        if (left > right)
+        if (isLeftNumberLarger())
         {
             points++;
         } else
@@ -62,31 +35,13 @@ public class MainActivity extends Activity
             points--;
         }
 
-        TextView score = findViewById(R.id.points);
-        score.setText(Integer.toString(points));
-
-        left = (random.nextInt(10));
-        lbutton.setText(Integer.toString(left));
-
-        do
-        {
-            right = random.nextInt(10);
-        }
-        while (left == right);
-        rbutton.setText(Integer.toString(right));
-
-
+        scoreIt();
+        randomizeNumbers();
     }
 
     public void rightClick(View view)
     {
-        Button lbutton = findViewById(R.id.left_button);
-        Button rbutton = findViewById(R.id.right_button);
-
-        int left = Integer.parseInt(lbutton.getText().toString());
-        int right = Integer.parseInt(rbutton.getText().toString());
-
-        if (right > left)
+        if (!isLeftNumberLarger())
         {
             points++;
         } else
@@ -94,17 +49,43 @@ public class MainActivity extends Activity
             points--;
         }
 
-        TextView score = findViewById(R.id.points);
-        score.setText(Integer.toString(points));
+        scoreIt();
+        randomizeNumbers();
+    }
+
+    public void randomizeNumbers()
+    {
+        int left = 0;
+        int right = 0;
+        Random random = new Random();
 
         left = (random.nextInt(10));
+        Button lbutton = findViewById(R.id.left_button);
         lbutton.setText(Integer.toString(left));
 
+        Button rbutton = findViewById(R.id.right_button);
         do
         {
             right = random.nextInt(10);
         }
         while (left == right);
         rbutton.setText(Integer.toString(right));
+    }
+
+    public boolean isLeftNumberLarger()
+    {
+        Button lbutton = findViewById(R.id.left_button);
+        int left = Integer.parseInt(lbutton.getText().toString());
+
+        Button rbutton = findViewById(R.id.right_button);
+        int right = Integer.parseInt(rbutton.getText().toString());
+
+        return left > right;
+    }
+
+    public void scoreIt()
+    {
+        TextView score = findViewById(R.id.points);
+        score.setText(Integer.toString(points));
     }
 }
