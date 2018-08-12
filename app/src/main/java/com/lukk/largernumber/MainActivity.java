@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends Activity
@@ -24,7 +28,6 @@ public class MainActivity extends Activity
         scoreIt();
         randomizeNumbers();
     }
-
 
     public void leftClick(View view)
     {
@@ -56,6 +59,45 @@ public class MainActivity extends Activity
 
         scoreIt();
         randomizeNumbers();
+    }
+
+    public void Sayian(View view)
+    {
+        ImageView imageView = findViewById(R.id.goku_image);
+
+        List <Integer> radioList = new ArrayList<>();
+        radioList.add(R.id.SSJ);
+        radioList.add(R.id.SSJ4);
+        radioList.add(R.id.Smile);
+        radioList.add(R.id.SSJ2);
+
+        switch (view.getId())
+        {
+            case R.id.SSJ:
+            {
+                imageView.setImageResource(R.drawable.goku_ssj);
+                uncheckRadio(radioList,view.getId());
+                break;
+            }
+            case R.id.SSJ4:
+            {
+                imageView.setImageResource(R.drawable.goku_ssj4);
+                uncheckRadio(radioList,view.getId());
+                break;
+            }
+            case R.id.Smile:
+            {
+                imageView.setImageResource(R.drawable.goku_ssj4_side);
+                uncheckRadio(radioList,view.getId());
+                break;
+            }
+            case R.id.SSJ2:
+            {
+                imageView.setImageResource(R.drawable.goku_ssj2);
+                uncheckRadio(radioList,view.getId());
+                break;
+            }
+        }
     }
 
     public void randomizeNumbers()
@@ -102,6 +144,19 @@ public class MainActivity extends Activity
         } else
         {
             Toast.makeText(this, "Ekhmm..", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void uncheckRadio(List<Integer> radiobuttons ,int id)
+    {
+        for(Integer i : radiobuttons)
+        {
+            if(i==id) continue;
+            else
+            {
+                RadioButton radioButton = findViewById(i);
+                radioButton.setChecked(false);
+            }
         }
     }
 }
