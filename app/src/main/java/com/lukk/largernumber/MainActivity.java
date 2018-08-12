@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,6 +35,15 @@ public class MainActivity extends Activity
         ListView listView = findViewById(R.id.star_list);
         ArrayAdapter<String> starAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, STARS);
         listView.setAdapter(starAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                Toast.makeText(MainActivity.this, "STAR", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void leftClick(View view)
