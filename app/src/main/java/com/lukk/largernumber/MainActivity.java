@@ -3,8 +3,11 @@ package com.lukk.largernumber;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +18,8 @@ import java.util.Random;
 
 public class MainActivity extends Activity
 {
-
     private int points;
+    private String[] STARS = {"*", "*", "*", "*", "*", "*", "*"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,6 +30,10 @@ public class MainActivity extends Activity
         points = 0;
         scoreIt();
         randomizeNumbers();
+
+        ListView listView = findViewById(R.id.star_list);
+        ArrayAdapter<String> starAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, STARS);
+        listView.setAdapter(starAdapter);
     }
 
     public void leftClick(View view)
