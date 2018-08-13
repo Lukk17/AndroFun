@@ -1,9 +1,9 @@
 package com.lukk.largernumber;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -175,5 +175,12 @@ public class MainActivity extends Activity
                 radioButton.setChecked(false);
             }
         }
+    }
+
+    public void activ2_button(View view)
+    {
+        Intent activiti2 = new Intent(this, A2.class);
+        activiti2.putExtra("message", "Activity 2");
+        startActivity(activiti2);
     }
 }
