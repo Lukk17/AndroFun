@@ -30,13 +30,30 @@ public class A2 extends Activity
         TextView textView = findViewById(R.id.A2);
         textView.setText(message);
 
+
+        List<String> lines = scanFile();
+        spiner(lines);
+    }
+
+    public void mainActivity_button(View view)
+    {
+        Intent mainActivity = new Intent(this, MainActivity.class);
+        startActivity(mainActivity);
+    }
+
+    public List<String> scanFile()
+    {
         Scanner scan = new Scanner(getResources().openRawResource(R.raw.simple_text));
         List<String> lines = new ArrayList<>();
         while (scan.hasNextLine())
         {
             lines.add(scan.nextLine());
         }
+        return lines;
+    }
 
+    public void spiner(List<String> lines)
+    {
         final Spinner spinner = findViewById(R.id.simpleText);
         ArrayAdapter data = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, lines);
         spinner.setAdapter(data);
@@ -54,11 +71,6 @@ public class A2 extends Activity
 
             }
         });
-    }
 
-    public void mainActivity_button(View view)
-    {
-        Intent mainActivity = new Intent(this, MainActivity.class);
-        startActivity(mainActivity);
     }
 }
