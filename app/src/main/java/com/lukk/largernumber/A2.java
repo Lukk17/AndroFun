@@ -4,7 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +31,29 @@ public class A2 extends Activity
         textView.setText(message);
 
         Scanner scan = new Scanner(getResources().openRawResource(R.raw.simple_text));
-        String lines = "start \n";
+        List<String> lines = new ArrayList<>();
         while (scan.hasNextLine())
         {
-            lines = lines.concat(scan.nextLine()+ "\n");
+            lines.add(scan.nextLine());
         }
 
-        TextView simpleText = findViewById(R.id.simpleText);
-        simpleText.setText(lines);
+        final Spinner spinner = findViewById(R.id.simpleText);
+        ArrayAdapter data = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, lines);
+        spinner.setAdapter(data);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                Toast.makeText(A2.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView)
+            {
+
+            }
+        });
     }
 
     public void mainActivity_button(View view)
