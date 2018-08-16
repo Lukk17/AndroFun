@@ -30,4 +30,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/A2" />
+
+    <TextView
+        android:id="@+id/simpleText"
+        android:layout_width="182dp"
+        android:layout_height="320dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="57dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/mainActivity_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/A2" />
 </android.support.constraint.ConstraintLayout>

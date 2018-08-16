@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class A2 extends Activity
 {
 
@@ -20,6 +24,16 @@ public class A2 extends Activity
 
         TextView textView = findViewById(R.id.A2);
         textView.setText(message);
+
+        Scanner scan = new Scanner(getResources().openRawResource(R.raw.simple_text));
+        String lines = "start \n";
+        while (scan.hasNextLine())
+        {
+            lines = lines.concat(scan.nextLine()+ "\n");
+        }
+
+        TextView simpleText = findViewById(R.id.simpleText);
+        simpleText.setText(lines);
     }
 
     public void mainActivity_button(View view)
