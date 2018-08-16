@@ -21,7 +21,6 @@ import java.util.Scanner;
 
 public class A2 extends Activity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,7 +37,7 @@ public class A2 extends Activity
         List<String> lines = scanFile(R.raw.simple_text);
         spiner(lines);
 
-        writeToFile();
+        writeToFile(lines);
     }
 
     public void mainActivity_button(View view)
@@ -48,15 +47,16 @@ public class A2 extends Activity
     }
 
     public List<String> scanFile(int id)
-{
-    Scanner scan = new Scanner(getResources().openRawResource(id));
-    List<String> lines = new ArrayList<>();
-    while (scan.hasNextLine())
     {
-        lines.add(scan.nextLine());
+        Scanner scan = new Scanner(getResources().openRawResource(id));
+        List<String> lines = new ArrayList<>();
+        while (scan.hasNextLine())
+        {
+            lines.add(scan.nextLine());
+        }
+        return lines;
     }
-    return lines;
-}
+
     public List<String> scanFile(String name) throws FileNotFoundException
     {
         Scanner scan = new Scanner(openFileInput(name));
@@ -71,7 +71,7 @@ public class A2 extends Activity
     public void spiner(List<String> lines)
     {
         final Spinner spinner = findViewById(R.id.simpleText);
-        ArrayAdapter data = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, lines);
+        ArrayAdapter data = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lines);
         spinner.setAdapter(data);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -84,13 +84,11 @@ public class A2 extends Activity
             @Override
             public void onNothingSelected(AdapterView<?> adapterView)
             {
-
             }
         });
-
     }
 
-    public void writeToFile()
+    public void writeToFile(List<String> lines)
     {
         String androidString = "start\n";
         List<String> androidList = new ArrayList<>();
@@ -98,6 +96,10 @@ public class A2 extends Activity
         try
         {
             PrintStream file = new PrintStream(openFileOutput("file_to_write.txt", MODE_PRIVATE));
+            for (String s : lines)
+            {
+                file.print(s + "\n");
+            }
             file.print("one");
             file.print("two");
             file.print("three");
@@ -111,9 +113,9 @@ public class A2 extends Activity
             e.printStackTrace();
         }
 
-        for(String s: androidList)
+        for (String s : androidList)
         {
-            androidString+= s+"\n";
+            androidString += s + "\n";
         }
         TextView androidFile = findViewById(R.id.androidFile);
         androidFile.setText(androidString);
