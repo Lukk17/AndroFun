@@ -38,31 +38,7 @@ public class A2 extends Activity
         List<String> lines = scanFile(R.raw.simple_text);
         spiner(lines);
 
-        String androidString = "start\n";
-        List<String> androidList = new ArrayList<>();
-
-        try
-        {
-            PrintStream file = new PrintStream(openFileOutput("file_to_write.txt", MODE_PRIVATE));
-            file.print("one");
-            file.print("two");
-            file.print("three");
-            file.print("four");
-            file.close();
-
-            androidList = scanFile("file_to_write.txt");
-
-        } catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
-        for(String s: androidList)
-        {
-            androidString+= s+"\n";
-        }
-        TextView androidFile = findViewById(R.id.androidFile);
-        androidFile.setText(androidString);
+        writeToFile();
     }
 
     public void mainActivity_button(View view)
@@ -112,5 +88,34 @@ public class A2 extends Activity
             }
         });
 
+    }
+
+    public void writeToFile()
+    {
+        String androidString = "start\n";
+        List<String> androidList = new ArrayList<>();
+
+        try
+        {
+            PrintStream file = new PrintStream(openFileOutput("file_to_write.txt", MODE_PRIVATE));
+            file.print("one");
+            file.print("two");
+            file.print("three");
+            file.print("four");
+            file.close();
+
+            androidList = scanFile("file_to_write.txt");
+
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        for(String s: androidList)
+        {
+            androidString+= s+"\n";
+        }
+        TextView androidFile = findViewById(R.id.androidFile);
+        androidFile.setText(androidString);
     }
 }
