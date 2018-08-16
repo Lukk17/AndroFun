@@ -43,4 +43,16 @@
         app:layout_constraintTop_toBottomOf="@+id/A2">
 
     </Spinner>
+
+    <TextView
+        android:id="@+id/androidFile"
+        android:layout_width="113dp"
+        android:layout_height="155dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="86dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/mainActivity_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/simpleText" />
 </android.support.constraint.ConstraintLayout>
