@@ -10,17 +10,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class A2 extends Activity
 {
+    private String TEMP_FILE = "androidFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,17 +37,25 @@ public class A2 extends Activity
         TextView textView = findViewById(R.id.A2);
         textView.setText(message);
 
-
         List<String> lines = scanFile(R.raw.simple_text);
         spiner(lines);
-
-        writeToFile(lines);
     }
 
     public void mainActivity_button(View view)
     {
         Intent mainActivity = new Intent(this, MainActivity.class);
         startActivity(mainActivity);
+    }
+
+    public void readClick(View view)
+    {
+        showFile(readFile(TEMP_FILE));
+    }
+
+    public void writeClick(View view)
+    {
+        List<String> lines = scanFile(R.raw.file_to_write);
+        writeToFile(lines, TEMP_FILE);
     }
 
     public List<String> scanFile(int id)
@@ -88,36 +100,61 @@ public class A2 extends Activity
         });
     }
 
-    public void writeToFile(List<String> lines)
+    public void writeToFile(List<String> linesToWrite, String fileName)
     {
-        String androidString = "start\n";
-        List<String> androidList = new ArrayList<>();
-
         try
         {
-            PrintStream file = new PrintStream(openFileOutput("file_to_write.txt", MODE_PRIVATE));
-            for (String s : lines)
-            {
-                file.print(s + "\n");
-            }
-            file.print("one");
-            file.print("two");
-            file.print("three");
-            file.print("four");
-            file.close();
+            String temp = readFile(fileName);
+            Random random = new Random();
+            PrintStream file = new PrintStream(openFileOutput(fileName, MODE_PRIVATE));
 
-            androidList = scanFile("file_to_write.txt");
+            file.append(temp);
+            for (String s : linesToWrite)
+            {
+                file.append(s + "\n");
+            }
+            file.append("one\t");
+            file.append("two\t");
+            file.append("three\t");
+            file.append("four\t");
+            file.append(Integer.toString(random.nextInt()));
+            file.close();
 
         } catch (FileNotFoundException e)
         {
             e.printStackTrace();
         }
+    }
 
+    public String readFile(String fileName)
+    {
+        String androidString = "";
+        List<String> androidList = new ArrayList<>();
+
+        try
+        {
+            androidList = scanFile(fileName);
+
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        if(!androidList.get(0).equals("start"))
+        {
+            androidString = "start\n";
+        }
         for (String s : androidList)
         {
+
+
             androidString += s + "\n";
         }
+        return androidString;
+    }
+
+    public void showFile (String contentToShow)
+    {
         TextView androidFile = findViewById(R.id.androidFile);
-        androidFile.setText(androidString);
+        androidFile.setText(contentToShow);
     }
 }
