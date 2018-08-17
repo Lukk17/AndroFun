@@ -181,6 +181,8 @@ public class A2 extends Activity
         {
             e.printStackTrace();
         }
+
+        showFile(readFile(fileName));
     }
 
     public int countLines(String str)
