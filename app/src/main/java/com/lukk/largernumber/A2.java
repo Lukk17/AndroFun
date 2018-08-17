@@ -108,16 +108,20 @@ public class A2 extends Activity
             Random random = new Random();
             PrintStream file = new PrintStream(openFileOutput(fileName, MODE_PRIVATE));
 
-            file.append(temp);
+            if(countLines(temp)<=22)
+            {
+                file.append(temp);
+            }
+
             for (String s : linesToWrite)
             {
                 file.append(s + "\n");
             }
-            file.append("one\t");
-            file.append("two\t");
-            file.append("three\t");
-            file.append("four\t");
-            file.append(Integer.toString(random.nextInt()));
+            file.append("one ");
+            file.append("two ");
+            file.append("three ");
+            file.append("four ");
+            file.append("\n" + random.nextInt() + "\n\n");
             file.close();
 
         } catch (FileNotFoundException e)
@@ -141,7 +145,7 @@ public class A2 extends Activity
         }
         if(!androidList.get(0).equals("start"))
         {
-            androidString = "start\n";
+            androidString += "start\n";
         }
         for (String s : androidList)
         {
@@ -150,6 +154,12 @@ public class A2 extends Activity
             androidString += s + "\n";
         }
         return androidString;
+    }
+
+    public int countLines(String str)
+    {
+        String[] lines = str.split("\n");
+        return  lines.length;
     }
 
     public void showFile (String contentToShow)

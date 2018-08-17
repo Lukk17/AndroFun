@@ -50,7 +50,7 @@
 
     <TextView
         android:id="@+id/androidFile"
-        android:layout_width="113dp"
+        android:layout_width="181dp"
         android:layout_height="396dp"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="86dp"
