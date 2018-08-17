@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class A2 extends Activity
 {
@@ -56,6 +57,11 @@ public class A2 extends Activity
     {
         List<String> lines = scanFile(R.raw.file_to_write);
         writeToFile(lines, TEMP_FILE);
+    }
+
+    public void wipeClick(View view)
+    {
+        wipeFile(TEMP_FILE);
     }
 
     public List<String> scanFile(int id)
@@ -143,17 +149,38 @@ public class A2 extends Activity
         {
             e.printStackTrace();
         }
-        if(!androidList.get(0).equals("start"))
+
+        try
         {
-            androidString += "start\n";
+            if (!"start".equals(androidList.get(0)))
+            {
+                androidString += "start\n";
+            }
         }
+        catch (IndexOutOfBoundsException e)
+        {
+            System.out.println("File was wiped");
+        }
+
         for (String s : androidList)
         {
-
-
             androidString += s + "\n";
         }
         return androidString;
+    }
+
+    public void wipeFile(String fileName)
+    {
+        try
+        {
+            PrintStream file = new PrintStream(openFileOutput(fileName, MODE_PRIVATE));
+            file.append("");
+            file.close();
+
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public int countLines(String str)
