@@ -43,7 +43,10 @@ public class A2 extends Activity
     public void mainActivity_button(View view)
     {
         Intent mainActivity = new Intent(this, MainActivity.class);
-        startActivity(mainActivity);
+        mainActivity.putExtra("a2_msg", "chiiicken");
+        setResult(RESULT_OK, mainActivity);
+        finish();
+
     }
 
     public void readClick(View view)

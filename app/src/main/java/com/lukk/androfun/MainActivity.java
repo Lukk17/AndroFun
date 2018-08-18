@@ -22,7 +22,8 @@ import java.util.Random;
 public class MainActivity extends Activity
 {
     private int points;
-    private String[] STARS = {"*", "*", "*", "*", "*", "*", "*"};
+    private static final String[] STARS = {"*", "*", "*", "*", "*", "*", "*"};
+    private static final int REQ_CODE_A2 =  1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -183,6 +184,17 @@ public class MainActivity extends Activity
     {
         Intent activiti2 = new Intent(this, A2.class);
         activiti2.putExtra("message", "Activity 2");
-        startActivity(activiti2);
+        startActivityForResult(activiti2, REQ_CODE_A2);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQ_CODE_A2)
+        {
+            TextView a2 = findViewById(R.id.a2_res);
+            a2.setText(data.getStringExtra("a2_msg"));
+        }
     }
 }
