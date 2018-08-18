@@ -81,6 +81,7 @@ public class A2 extends Activity
         {
             lines.add(scan.nextLine());
         }
+        scan.close();
         return lines;
     }
 
@@ -108,14 +109,18 @@ public class A2 extends Activity
     {
         try
         {
-            String temp = readFile(fileName);
+            List<String> androidList = scanFile(fileName);
             Random random = new Random();
-            PrintStream file = new PrintStream(openFileOutput(fileName, MODE_PRIVATE | MODE_APPEND));
+            PrintStream file;
 
-//            if(countLines(temp)<=22)
-//            {
-//                file.append(temp);
-//            }
+            if(androidList.size()<=22)
+            {
+                 file = new PrintStream(openFileOutput(fileName, MODE_APPEND));
+            }
+            else
+            {
+                 file = new PrintStream(openFileOutput(fileName, MODE_PRIVATE));
+            }
 
             for (String s : linesToWrite)
             {
