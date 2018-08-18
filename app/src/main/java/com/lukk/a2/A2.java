@@ -1,4 +1,4 @@
-package com.lukk.largernumber;
+package com.lukk.a2;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,17 +10,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
+import com.lukk.androfun.MainActivity;
+import com.lukk.androfun.R;
+
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class A2 extends Activity
 {
@@ -112,12 +110,12 @@ public class A2 extends Activity
         {
             String temp = readFile(fileName);
             Random random = new Random();
-            PrintStream file = new PrintStream(openFileOutput(fileName, MODE_PRIVATE));
+            PrintStream file = new PrintStream(openFileOutput(fileName, MODE_PRIVATE | MODE_APPEND));
 
-            if(countLines(temp)<=22)
-            {
-                file.append(temp);
-            }
+//            if(countLines(temp)<=22)
+//            {
+//                file.append(temp);
+//            }
 
             for (String s : linesToWrite)
             {

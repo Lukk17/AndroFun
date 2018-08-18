@@ -1,4 +1,4 @@
-package com.lukk.largernumber;
+package com.lukk.androfun;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
