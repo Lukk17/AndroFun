@@ -2,6 +2,7 @@ package com.lukk.a2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -74,6 +75,12 @@ public class A2 extends Activity
             lines.add(scan.nextLine());
         }
         return lines;
+    }
+
+    public void musicClick(View view)
+    {
+        MediaPlayer mp = MediaPlayer.create(this,R.raw.kshmr_wildcard);
+        mp.start();
     }
 
     public List<String> scanFile(String name) throws FileNotFoundException
