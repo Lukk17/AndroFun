@@ -24,6 +24,7 @@ import java.util.Scanner;
 public class A2 extends Activity
 {
     private String TEMP_FILE = "androidFile";
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +40,13 @@ public class A2 extends Activity
 
         List<String> lines = scanFile(R.raw.simple_text);
         spiner(lines);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        mp.stop();
     }
 
     public void mainActivity_button(View view)
@@ -79,7 +87,7 @@ public class A2 extends Activity
 
     public void musicClick(View view)
     {
-        MediaPlayer mp = MediaPlayer.create(this,R.raw.kshmr_wildcard);
+        mp = MediaPlayer.create(this,R.raw.kshmr_wildcard);
         mp.start();
     }
 
@@ -196,12 +204,6 @@ public class A2 extends Activity
         }
 
         showFile(readFile(fileName));
-    }
-
-    public int countLines(String str)
-    {
-        String[] lines = str.split("\n");
-        return  lines.length;
     }
 
     public void showFile (String contentToShow)
