@@ -165,17 +165,18 @@
         android:id="@+id/activ2_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="167dp"
-        android:layout_marginLeft="103dp"
-        android:layout_marginRight="167dp"
-        android:layout_marginStart="103dp"
+        android:layout_marginEnd="280dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="280dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="23dp"
         android:onClick="activ2_button"
         android:text="A2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/star_list"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/a2_res"
@@ -188,6 +189,23 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goku_image" />
+
+    <Button
+        android:id="@+id/a3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginLeft="144dp"
+        android:layout_marginRight="72dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="23dp"
+        android:onClick="activ3_button"
+        android:text="A3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/activ2_button"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 
 </android.support.constraint.ConstraintLayout>

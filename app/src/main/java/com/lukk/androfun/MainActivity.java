@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lukk.a2.A2;
+import com.lukk.a3.A3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -210,5 +211,11 @@ public class MainActivity extends Activity
     {
         super.onRestoreInstanceState(savedInstanceState);
         points = savedInstanceState.getInt("points");
+    }
+
+    public void activ3_button(View view)
+    {
+        Intent activiti3 = new Intent(this, A3.class);
+        startActivity(activiti3);
     }
 }

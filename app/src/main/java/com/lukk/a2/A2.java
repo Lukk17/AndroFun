@@ -2,6 +2,7 @@ package com.lukk.a2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,16 @@ public class A2 extends Activity
 
         List<String> lines = scanFile(R.raw.simple_text);
         spiner(lines);
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        TextView shared = findViewById(R.id.sharedA3);
+        SharedPreferences sharedPreferences = getSharedPreferences("pref", MODE_PRIVATE);
+        String savedWord = sharedPreferences.getString("editText", "");
+        shared.setText(savedWord);
     }
 
     @Override
