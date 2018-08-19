@@ -197,4 +197,18 @@ public class MainActivity extends Activity
             a2.setText(data.getStringExtra("a2_msg"));
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putInt("points",points);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        super.onRestoreInstanceState(savedInstanceState);
+        points = savedInstanceState.getInt("points");
+    }
 }

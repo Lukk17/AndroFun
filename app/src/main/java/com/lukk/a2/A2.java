@@ -46,7 +46,14 @@ public class A2 extends Activity
     protected void onPause()
     {
         super.onPause();
-        mp.stop();
+        try
+        {
+            mp.stop();
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println("no music was played");
+        }
     }
 
     public void mainActivity_button(View view)
