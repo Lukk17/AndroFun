@@ -4,11 +4,8 @@ import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
-import android.support.constraint.ConstraintLayout;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -58,4 +55,5 @@ public class A3 extends Activity
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
 }
