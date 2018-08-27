@@ -4,16 +4,20 @@ import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.support.v4.app.Fragment;
 
 import com.lukk.androfun.R;
 
 import java.util.Random;
 
-public class A3 extends Activity
+public class A3 extends FragmentActivity
 {
 
     @Override
@@ -54,6 +58,12 @@ public class A3 extends Activity
         builder.setTitle("ok");
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePicker();
+        FragmentManager fg = this.getSupportFragmentManager();
+        newFragment.show(fg, "datePicker");
     }
 
 }
