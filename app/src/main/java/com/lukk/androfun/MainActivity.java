@@ -13,6 +13,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.lukk.a2.A2;
 import com.lukk.a3.A3;
 
@@ -24,7 +27,7 @@ public class MainActivity extends Activity
 {
     private int points;
     private static final String[] STARS = {"*", "*", "*", "*", "*", "*", "*"};
-    private static final int REQ_CODE_A2 =  1;
+    private static final int REQ_CODE_A2 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,8 +49,37 @@ public class MainActivity extends Activity
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
                 Toast.makeText(MainActivity.this, "STAR", Toast.LENGTH_SHORT).show();
+
+                findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        switch (v.getId())
+                        {
+                            case R.id.sign_in_button:
+                                signIn();
+                                break;
+
+                        }
+                    }
+                });
             }
         });
+    }
+
+    private void signIn()
+    {
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+//        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     public void leftClick(View view)
@@ -86,7 +118,7 @@ public class MainActivity extends Activity
     {
         ImageView imageView = findViewById(R.id.goku_image);
 
-        List <Integer> radioList = new ArrayList<>();
+        List<Integer> radioList = new ArrayList<>();
         radioList.add(R.id.SSJ);
         radioList.add(R.id.SSJ4);
         radioList.add(R.id.Smile);
@@ -97,25 +129,25 @@ public class MainActivity extends Activity
             case R.id.SSJ:
             {
                 imageView.setImageResource(R.drawable.goku_ssj);
-                uncheckRadio(radioList,view.getId());
+                uncheckRadio(radioList, view.getId());
                 break;
             }
             case R.id.SSJ4:
             {
                 imageView.setImageResource(R.drawable.goku_ssj4);
-                uncheckRadio(radioList,view.getId());
+                uncheckRadio(radioList, view.getId());
                 break;
             }
             case R.id.Smile:
             {
                 imageView.setImageResource(R.drawable.goku_ssj4_side);
-                uncheckRadio(radioList,view.getId());
+                uncheckRadio(radioList, view.getId());
                 break;
             }
             case R.id.SSJ2:
             {
                 imageView.setImageResource(R.drawable.goku_ssj2);
-                uncheckRadio(radioList,view.getId());
+                uncheckRadio(radioList, view.getId());
                 break;
             }
         }
@@ -168,11 +200,11 @@ public class MainActivity extends Activity
         }
     }
 
-    public void uncheckRadio(List<Integer> radiobuttons ,int id)
+    public void uncheckRadio(List<Integer> radiobuttons, int id)
     {
-        for(Integer i : radiobuttons)
+        for (Integer i : radiobuttons)
         {
-            if(i==id) continue;
+            if (i == id) continue;
             else
             {
                 RadioButton radioButton = findViewById(i);
@@ -192,7 +224,7 @@ public class MainActivity extends Activity
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQ_CODE_A2)
+        if (requestCode == REQ_CODE_A2)
         {
             TextView a2 = findViewById(R.id.a2_res);
             a2.setText(data.getStringExtra("a2_msg"));
@@ -203,7 +235,7 @@ public class MainActivity extends Activity
     protected void onSaveInstanceState(Bundle outState)
     {
         super.onSaveInstanceState(outState);
-        outState.putInt("points",points);
+        outState.putInt("points", points);
     }
 
     @Override
