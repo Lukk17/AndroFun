@@ -46,15 +46,6 @@ public class A2 extends Activity
 
         List<String> lines = scanFile(R.raw.simple_text);
         spiner(lines);
-
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        // Build a GoogleSignInClient with the options specified by gso.
-        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
     @Override
@@ -65,12 +56,6 @@ public class A2 extends Activity
         SharedPreferences sharedPreferences = getSharedPreferences("pref", MODE_PRIVATE);
         String savedWord = sharedPreferences.getString("editText", "");
         shared.setText(savedWord);
-
-        // Check for existing Google Sign In account, if the user is already signed in
-// the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        TextView title = findViewById(R.id.A2);
-        title.setText(account.getEmail());
     }
 
     @Override
