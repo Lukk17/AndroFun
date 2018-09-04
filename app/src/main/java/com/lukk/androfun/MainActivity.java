@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.lukk.a2.A2;
 import com.lukk.a3.A3;
+import com.lukk.api.ApiActivity;
 import com.lukk.signIn.LoginActivity;
 
 import java.util.ArrayList;
@@ -224,5 +225,11 @@ public class MainActivity extends Activity
     {
         Intent login = new Intent(this, LoginActivity.class);
         startActivity(login);
+    }
+
+    public void apiButton(View view)
+    {
+        Intent api = new Intent(this, ApiActivity.class);
+        startActivity(api);
     }
 }
