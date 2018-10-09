@@ -32,7 +32,9 @@ public class DBActivity extends Activity
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
+
+                String value = dataSnapshot.getValue(String.class);     // you can cast it to any object like User etc !
+
                 Log.d("onDataChange", "Value is: " + value);
             }
 
