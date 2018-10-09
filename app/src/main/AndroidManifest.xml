@@ -30,7 +30,10 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name="com.lukk.api.ApiActivity"
-            android:label="@string/title_activity_api"></activity>
+            android:label="@string/title_activity_api" />
+        <activity
+            android:name="com.lukk.db.DBActivity"
+            android:label="@string/title_activity_db"></activity>
     </application>
 
 </manifest>

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.lukk.a2.A2;
 import com.lukk.a3.A3;
 import com.lukk.api.ApiActivity;
+import com.lukk.db.DBActivity;
 import com.lukk.signIn.LoginActivity;
 
 import java.util.ArrayList;
@@ -231,5 +232,11 @@ public class MainActivity extends Activity
     {
         Intent api = new Intent(this, ApiActivity.class);
         startActivity(api);
+    }
+
+    public void db(View view)
+    {
+        Intent db = new Intent(this, DBActivity.class);
+        startActivity(db);
     }
 }

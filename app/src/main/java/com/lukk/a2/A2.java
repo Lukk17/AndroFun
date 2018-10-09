@@ -12,10 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.lukk.androfun.MainActivity;
 import com.lukk.androfun.R;
 
@@ -129,7 +125,7 @@ public class A2 extends Activity
     public void spiner(List<String> lines)
     {
         final Spinner spinner = findViewById(R.id.simpleText);
-        ArrayAdapter data = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lines);
+        ArrayAdapter<String> data = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, lines);
         spinner.setAdapter(data);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
