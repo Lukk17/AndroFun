@@ -1,6 +1,7 @@
 package com.lukk.a3;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.support.v4.app.Fragment;
 
 import com.lukk.androfun.R;
+import com.lukk.service.NotifyService;
 
 import java.util.Random;
 
@@ -66,4 +68,22 @@ public class A3 extends FragmentActivity
         newFragment.show(fg, "datePicker");
     }
 
+    public void serviceButton(View view)
+    {
+        Intent notifyService = new Intent(this, NotifyService.class);
+        changeNumber();
+        startService(notifyService);
+    }
+
+    static private TextView serviceView;
+
+    public void changeNumber()
+    {
+        serviceView = findViewById(R.id.serviceView);
+    }
+
+    public static void cn( int number){
+
+        serviceView.setText(number);
+    }
 }

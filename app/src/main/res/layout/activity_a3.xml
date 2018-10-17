@@ -43,5 +43,18 @@
         android:onClick="showDatePickerDialog"
         />
 
+    <TextView
+        android:id="@+id/serviceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="serviceView" />
+
+    <Button
+        android:id="@+id/serviceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="serviceButton"
+        android:text="serviceStart" />
+
 
 </LinearLayout>
