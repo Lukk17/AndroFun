@@ -1,5 +1,6 @@
 package com.lukk.service;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -7,6 +8,7 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.support.v4.app.NotificationBuilderWithBuilderAccessor;
 import android.util.Log;
 import android.widget.Toast;
 import android.os.Process;
@@ -14,9 +16,9 @@ import android.os.Process;
 import com.lukk.a3.A3;
 
 
-public class NotifyService extends Service
+public class FunService extends android.app.Service
 {
-    public NotifyService()
+    public FunService()
     {
 
     }
@@ -38,10 +40,10 @@ public class NotifyService extends Service
             try {
                 for (int i=0; i<10; i++)
                 {
-//                    A3.cn(i);
                     Log.i("iteration of service", Integer.toString(i));
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 }
+
             } catch (InterruptedException e) {
                 // Restore interrupt status.
                 Thread.currentThread().interrupt();

@@ -36,7 +36,7 @@
             android:label="@string/title_activity_db" />
 
         <service
-            android:name="com.lukk.service.NotifyService"
+            android:name="com.lukk.service.FunService"
             android:enabled="true"
             android:exported="true"></service>
     </application>
